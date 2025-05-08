@@ -26,7 +26,7 @@ export async function getPopularDestinations(): Promise<DestinationData[]> {
     // Uncomment this to use an actual API when ready
     // return await apiGet<DestinationData[]>(`${BASE_URL}/destinations/popular`);
     
-    // Simulated API response
+    // Simulated API response with expanded destinations
     return [
       {
         id: "1",
@@ -54,6 +54,51 @@ export async function getPopularDestinations(): Promise<DestinationData[]> {
         imageUrl: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80",
         rating: 4.7,
         price: "$550"
+      },
+      {
+        id: "4",
+        name: "Tokyo",
+        country: "Japan",
+        description: "Vibrant metropolis blending ultramodern and traditional",
+        imageUrl: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80",
+        rating: 4.6,
+        price: "$700"
+      },
+      {
+        id: "5",
+        name: "New York",
+        country: "United States",
+        description: "The Big Apple with iconic skyline and diverse culture",
+        imageUrl: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80",
+        rating: 4.5,
+        price: "$600"
+      },
+      {
+        id: "6",
+        name: "Barcelona",
+        country: "Spain",
+        description: "Cosmopolitan city known for art, architecture and cuisine",
+        imageUrl: "https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=80",
+        rating: 4.7,
+        price: "$480"
+      },
+      {
+        id: "7",
+        name: "Dubai",
+        country: "United Arab Emirates",
+        description: "Luxury shopping, ultramodern architecture and lively nightlife",
+        imageUrl: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80",
+        rating: 4.8,
+        price: "$750"
+      },
+      {
+        id: "8",
+        name: "Cape Town",
+        country: "South Africa",
+        description: "Beautiful coastal city with stunning Table Mountain views",
+        imageUrl: "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=800&q=80",
+        rating: 4.6,
+        price: "$520"
       }
     ];
   } catch (error) {

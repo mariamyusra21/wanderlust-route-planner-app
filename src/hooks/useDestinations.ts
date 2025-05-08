@@ -1,6 +1,6 @@
 
-import { useState, useEffect } from "react";
-import { getPopularDestinations, searchDestinations, DestinationData } from "@/services/destinations-service";
+import { useState, useEffect, useCallback } from "react";
+import { getPopularDestinations, searchDestinations as searchDestinationsApi, DestinationData } from "@/services/destinations-service";
 
 export function useDestinations() {
   const [destinations, setDestinations] = useState<DestinationData[]>([]);
@@ -26,8 +26,8 @@ export function useDestinations() {
     loadPopularDestinations();
   }, []);
 
-  // Function to search destinations
-  const searchForDestinations = async (query: string) => {
+  // Function to search destinations - wrapped in useCallback to prevent unnecessary re-renders
+  const searchDestinations = useCallback(async (query: string) => {
     if (!query.trim()) {
       // If query is empty, load popular destinations
       const data = await getPopularDestinations();
@@ -38,7 +38,7 @@ export function useDestinations() {
     try {
       setIsLoading(true);
       setError(null);
-      const results = await searchDestinations(query);
+      const results = await searchDestinationsApi(query);
       setDestinations(results);
     } catch (err) {
       setError("Failed to search destinations. Please try again later.");
@@ -46,12 +46,12 @@ export function useDestinations() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   return {
     destinations,
     isLoading,
     error,
-    searchDestinations: searchForDestinations
+    searchDestinations
   };
 }

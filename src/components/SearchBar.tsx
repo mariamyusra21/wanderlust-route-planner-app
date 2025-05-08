@@ -1,9 +1,10 @@
 
 import { useState } from 'react';
-import { Search, Calendar, MapPin } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/sonner';
+import DestinationAutocomplete from './DestinationAutocomplete';
+import DatePicker from './DatePicker';
 
 interface SearchBarProps {
   onSearch?: (destination: string, dates: string) => void;
@@ -45,24 +46,18 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
       className="w-full max-w-4xl bg-white p-3 rounded-xl shadow-lg flex flex-col md:flex-row gap-3"
     >
       <div className="relative flex-1">
-        <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-5 w-5" />
-        <Input
-          type="text"
-          placeholder="Where to?"
-          className="pl-10 h-12"
+        <DestinationAutocomplete 
           value={destination}
-          onChange={(e) => setDestination(e.target.value)}
+          onChange={setDestination}
+          placeholder="Where to?"
         />
       </div>
       
       <div className="relative flex-1">
-        <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-5 w-5" />
-        <Input
-          type="text"
-          placeholder="When? (e.g., Jun 2-10)"
-          className="pl-10 h-12"
+        <DatePicker
           value={dates}
-          onChange={(e) => setDates(e.target.value)}
+          onChange={setDates}
+          placeholder="When? (e.g., Jun 2-10)"
         />
       </div>
       
