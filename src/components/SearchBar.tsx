@@ -3,15 +3,40 @@ import { useState } from 'react';
 import { Search, Calendar, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { toast } from '@/components/ui/sonner';
 
-const SearchBar = () => {
+interface SearchBarProps {
+  onSearch?: (destination: string, dates: string) => void;
+}
+
+const SearchBar = ({ onSearch }: SearchBarProps) => {
   const [destination, setDestination] = useState('');
   const [dates, setDates] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Searching for:', { destination, dates });
-    // This would be connected to a search API in a real app
+    setIsSearching(true);
+
+    try {
+      console.log('Searching for:', { destination, dates });
+      
+      // Call the onSearch prop if provided
+      if (onSearch) {
+        onSearch(destination, dates);
+      }
+      
+      toast.success('Search started', {
+        description: `Searching for ${destination} on ${dates || 'any dates'}`,
+      });
+    } catch (error) {
+      console.error('Search error:', error);
+      toast.error('Search failed', {
+        description: 'Unable to process your search. Please try again.',
+      });
+    } finally {
+      setIsSearching(false);
+    }
   };
 
   return (
@@ -41,9 +66,13 @@ const SearchBar = () => {
         />
       </div>
       
-      <Button type="submit" className="h-12 px-6">
+      <Button 
+        type="submit" 
+        className="h-12 px-6"
+        disabled={isSearching}
+      >
         <Search className="mr-2 h-4 w-4" />
-        Search
+        {isSearching ? 'Searching...' : 'Search'}
       </Button>
     </form>
   );
