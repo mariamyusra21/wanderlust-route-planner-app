@@ -2,8 +2,10 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Map, Users, Globe, Heart, Award, Phone } from "lucide-react";
+import { Map, Users, Globe, Heart, Award, Phone, Mail, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Textarea } from "@/components/ui/textarea";
 
 const TEAM_MEMBERS = [
   {
@@ -23,6 +25,27 @@ const TEAM_MEMBERS = [
     role: "Customer Experience Manager",
     bio: "Passionate about creating memorable travel experiences for every client.",
     image: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
+  }
+];
+
+const CONTACT_INFO = [
+  {
+    icon: <Phone className="h-6 w-6 text-travel-primary" />,
+    title: "Phone",
+    content: "+1 (555) 123-4567",
+    action: "Call us"
+  },
+  {
+    icon: <Mail className="h-6 w-6 text-travel-primary" />,
+    title: "Email",
+    content: "hello@wanderlust.com",
+    action: "Email us"
+  },
+  {
+    icon: <MessageCircle className="h-6 w-6 text-travel-primary" />,
+    title: "Live Chat",
+    content: "Available Mon-Fri, 9AM-6PM EST",
+    action: "Start chat"
   }
 ];
 
@@ -121,17 +144,84 @@ const About = () => {
           </div>
         </section>
 
-        {/* Contact Section */}
+        {/* Contact Section - Enhanced */}
         <section className="py-16 bg-travel-secondary/10">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-6 text-travel-secondary">Get in Touch</h2>
-            <p className="text-lg max-w-2xl mx-auto mb-8">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-6 text-center text-travel-secondary">Get in Touch</h2>
+            <p className="text-lg max-w-2xl mx-auto mb-8 text-center">
               Have questions or want to learn more about our services? We'd love to hear from you!
             </p>
-            <Button size="lg" className="gap-2">
-              <Phone className="h-4 w-4" />
-              Contact Us
-            </Button>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+              {CONTACT_INFO.map((item, index) => (
+                <Card key={index} className="border-none shadow-md hover-card">
+                  <CardContent className="flex flex-col items-center justify-center p-6 text-center">
+                    <div className="bg-travel-primary/10 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                      {item.icon}
+                    </div>
+                    <h3 className="font-semibold text-xl mb-2">{item.title}</h3>
+                    <p className="text-muted-foreground mb-6">{item.content}</p>
+                    <Button variant="outline" className="border-travel-primary text-travel-primary hover:bg-travel-primary/10">
+                      {item.action}
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <div className="max-w-3xl mx-auto bg-background rounded-lg shadow-md p-8">
+              <h3 className="text-2xl font-bold mb-6 text-travel-secondary">Send us a message</h3>
+              <form className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="block font-medium">
+                      Name
+                    </label>
+                    <input
+                      id="name"
+                      type="text"
+                      className="w-full p-3 rounded-md border border-input"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="block font-medium">
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      className="w-full p-3 rounded-md border border-input"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="subject" className="block font-medium">
+                    Subject
+                  </label>
+                  <input
+                    id="subject"
+                    type="text"
+                    className="w-full p-3 rounded-md border border-input"
+                    placeholder="How can we help you?"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="message" className="block font-medium">
+                    Message
+                  </label>
+                  <Textarea
+                    id="message"
+                    placeholder="Tell us more about your inquiry..."
+                    className="min-h-[150px]"
+                  />
+                </div>
+                <Button type="submit" size="lg" className="w-full md:w-auto bg-travel-primary hover:bg-travel-primary/90">
+                  Send Message
+                </Button>
+              </form>
+            </div>
           </div>
         </section>
       </main>
