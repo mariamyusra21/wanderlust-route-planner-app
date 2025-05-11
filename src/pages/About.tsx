@@ -1,4 +1,3 @@
-
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -30,19 +29,19 @@ const TEAM_MEMBERS = [
 
 const CONTACT_INFO = [
   {
-    icon: <Phone className="h-6 w-6 text-travel-primary" />,
+    icon: <Phone className="h-5 w-5 text-travel-primary" />,
     title: "Phone",
     content: "+1 (555) 123-4567",
     action: "Call us"
   },
   {
-    icon: <Mail className="h-6 w-6 text-travel-primary" />,
+    icon: <Mail className="h-5 w-5 text-travel-primary" />,
     title: "Email",
     content: "hello@wanderlust.com",
     action: "Email us"
   },
   {
-    icon: <MessageCircle className="h-6 w-6 text-travel-primary" />,
+    icon: <MessageCircle className="h-5 w-5 text-travel-primary" />,
     title: "Live Chat",
     content: "Available Mon-Fri, 9AM-6PM EST",
     action: "Start chat"
@@ -144,7 +143,7 @@ const About = () => {
           </div>
         </section>
 
-        {/* Contact Section - Enhanced */}
+        {/* Contact Section - Enhanced with smaller but clear details */}
         <section className="py-16 bg-travel-secondary/10">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold mb-6 text-center text-travel-secondary">Get in Touch</h2>
@@ -152,16 +151,20 @@ const About = () => {
               Have questions or want to learn more about our services? We'd love to hear from you!
             </p>
             
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
               {CONTACT_INFO.map((item, index) => (
-                <Card key={index} className="border-none shadow-md hover-card">
-                  <CardContent className="flex flex-col items-center justify-center p-6 text-center">
-                    <div className="bg-travel-primary/10 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                <Card key={index} className="border-none shadow-sm hover-card">
+                  <CardContent className="flex flex-col items-center justify-center p-4 text-center">
+                    <div className="bg-travel-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-3">
                       {item.icon}
                     </div>
-                    <h3 className="font-semibold text-xl mb-2">{item.title}</h3>
-                    <p className="text-muted-foreground mb-6">{item.content}</p>
-                    <Button variant="outline" className="border-travel-primary text-travel-primary hover:bg-travel-primary/10">
+                    <h3 className="font-semibold text-base mb-1">{item.title}</h3>
+                    <p className="text-muted-foreground text-sm mb-4">{item.content}</p>
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      className="border-travel-primary text-travel-primary hover:bg-travel-primary/10 text-xs px-3 py-1 h-8"
+                    >
                       {item.action}
                     </Button>
                   </CardContent>
