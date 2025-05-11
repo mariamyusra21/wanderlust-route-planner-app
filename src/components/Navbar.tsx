@@ -18,7 +18,7 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
           <Link to="/" className="text-travel-secondary hover:text-travel-primary transition-colors">Home</Link>
-          <Link to="#destinations" className="text-travel-secondary hover:text-travel-primary transition-colors">Destinations</Link>
+          <Link to="/destinations" className="text-travel-secondary hover:text-travel-primary transition-colors">Destinations</Link>
           <Link to="/itineraries" className="text-travel-secondary hover:text-travel-primary transition-colors">Itineraries</Link>
           <Link to="/about" className="text-travel-secondary hover:text-travel-primary transition-colors">About</Link>
         </div>
@@ -59,7 +59,7 @@ const Navbar = () => {
               Home
             </Link>
             <Link 
-              to="#destinations" 
+              to="/destinations" 
               className="px-4 py-2 rounded-md hover:bg-muted transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
