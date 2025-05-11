@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import DestinationCard from './DestinationCard';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const destinations = [
   {
@@ -71,7 +72,7 @@ const PopularDestinations = () => {
   };
 
   return (
-    <section id="destinations" className="py-16 px-4 bg-white">
+    <section className="py-16 px-4 bg-gradient-to-br from-white to-purple-50 rounded-3xl">
       <div className="container mx-auto">
         <div className="flex justify-between items-center mb-8">
           <div>
@@ -84,6 +85,7 @@ const PopularDestinations = () => {
               size="icon" 
               onClick={scrollLeft}
               disabled={scrollPosition <= 0}
+              className="rounded-full hover:bg-primary/10"
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
@@ -92,6 +94,7 @@ const PopularDestinations = () => {
               size="icon" 
               onClick={scrollRight}
               disabled={scrollPosition >= maxScroll}
+              className="rounded-full hover:bg-primary/10"
             >
               <ChevronRight className="h-4 w-4" />
             </Button>
@@ -109,16 +112,23 @@ const PopularDestinations = () => {
             {destinations.map((destination) => (
               <DestinationCard
                 key={destination.id}
-                {...destination}
-                className="w-[300px] flex-shrink-0"
+                id={destination.id}
+                name={destination.name}
+                location={destination.location}
+                image={destination.image}
+                rating={destination.rating}
+                price={destination.price}
+                className="w-[300px] flex-shrink-0 material-card"
               />
             ))}
           </motion.div>
         </div>
 
         <div className="mt-8 text-center">
-          <Button variant="outline" className="mr-3">View All Destinations</Button>
-          <Button>Start Planning</Button>
+          <Link to="/destinations">
+            <Button variant="outline" className="mr-3 rounded-full px-6">View All Destinations</Button>
+          </Link>
+          <Button className="rounded-full px-6 bg-primary hover:bg-primary/90">Start Planning</Button>
         </div>
       </div>
     </section>

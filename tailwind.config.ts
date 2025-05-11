@@ -64,11 +64,21 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				travel: {
-					primary: '#0EA5E9',
+					primary: '#9b87f5',
 					secondary: '#1A1F2C',
-					accent: '#F97316',
+					accent: '#7E69AB',
+					tertiary: '#6E59A5',
 					light: '#F8FAFC',
 					dark: '#1E293B',
+					neutral: '#8E9196'
+				},
+				material: {
+					'purple-primary': '#9b87f5',
+					'purple-secondary': '#7E69AB',
+					'purple-tertiary': '#6E59A5',
+					'purple-dark': '#1A1F2C',
+					'purple-light': '#D6BCFA',
+					'neutral-gray': '#8E9196'
 				}
 			},
 			borderRadius: {

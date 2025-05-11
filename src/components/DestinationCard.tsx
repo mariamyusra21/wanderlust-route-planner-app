@@ -55,12 +55,12 @@ const DestinationCard = ({
           <Bookmark 
             className={cn(
               "h-5 w-5", 
-              isSaved ? "fill-travel-primary text-travel-primary" : "text-travel-dark"
+              isSaved ? "fill-primary text-primary" : "text-travel-dark"
             )}
           />
         </Button>
         {price && (
-          <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
+          <div className="absolute bottom-3 left-3 bg-primary/70 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
             From {price}
           </div>
         )}
@@ -75,8 +75,8 @@ const DestinationCard = ({
               <span className="text-sm">{location}</span>
             </div>
           </div>
-          <div className="flex items-center bg-travel-primary/10 text-travel-primary px-2 py-1 rounded-md">
-            <Star className="h-4 w-4 fill-travel-primary mr-1" />
+          <div className="flex items-center bg-primary/10 text-primary px-2 py-1 rounded-md">
+            <Star className="h-4 w-4 fill-primary mr-1" />
             <span className="font-medium text-sm">{rating.toFixed(1)}</span>
           </div>
         </div>
